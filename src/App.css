@@ -1,38 +1,186 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Estilo para manter o layout clean e escuro */
+.chat-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+  color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+}
+
+.cat-image img.cat {
+  width: 500px;
+  height: auto;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+  animation: cat-bounce 2s infinite;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+}
+
+@keyframes cat-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.loading{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 8%;
+}
+
+.loading-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #aaaaaa;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.response p {
+  font-size: 1.3em;
+  text-align: center;
+  color: #f0f0f0;
+  margin-top: 15px;
+  min-height: 30px;
+  animation: fadeIn 0.5s ease-in;
+  width: 500px;
+  line-height: 29px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+form input {
+  padding: 15px 20px;
+  font-size: 1.2em;
+  border-radius: 30px;
+  border: 2px solid #444;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+form input:focus {
+  border-color: #888;
+  transform: scale(1.05);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 80%;
+}
+
+
+.infos{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 12%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.tokenName{
+  font-size: 40px;
+  letter-spacing: 3px;
+  font-family: 'Mighty Sans';
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Mighty Sans';
+  src: url('./Mighty Sans.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;;
+}
+
+.links{
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  width: 360px;
+  margin-top: 20px;
+}
+
+.link{
+  padding: 15px 15px;
+  border-radius: 5px;
+  letter-spacing: 1.5px;
+  font-family: 'Mighty Sans';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b2b2b;
+  cursor: pointer;
+}
+
+.link:hover{
+  transform: scale(1.1);
+  background-color: #444;
+}
+
+.tokenCa{
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Mighty Sans';
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.copy-button{
+  margin-left: 5px;
+  font-weight: bold;
+  color: #444;
+  font-size: 18px;
+}
+
+.tokenCa{
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 100%;
+  left: 50%;
+}
+
+.ca{
+  font-weight: bold;
+}
+
+
+.link img{
+  width: 30px;
+}
+
+.pump{
+  padding: 10px 40px;
 }
