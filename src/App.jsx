@@ -130,8 +130,7 @@ const TrumpChat = () => {
             <a href={apiData.telegramLink} target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
           </div>
           <div className="tokenCa">
-            <span className="ca">CA: {apiData.tokenCA}</span>
-            <div onClick={copyTokenCa} className="copy-button">COPY</div>
+            <span onClick={copyTokenCa}  className="ca">CA: {apiData.tokenCA}</span>
           </div>
         </div>
       ) : (
