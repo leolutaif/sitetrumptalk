@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./App.css";
-import gifCat from "./gif.gif";
-import cat from "./cat.png";
-import miau from "./miau.mp3";
+import gifTrump from "./trump.gif";
+import trump from "./trump.png";
+import audioClip from "./makeamerica.mp3";
 import pump from "./pump.png";
 
-const CatChat = () => {
+const TrumpChat = () => {
   const [userMessage, setUserMessage] = useState('');
-  const [catResponse, setCatResponse] = useState('');
+  const [trumpResponse, setTrumpResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isResponding, setIsResponding] = useState(false);
   const [apiData, setApiData] = useState(null);
 
-  const accessKey = 'A1qQaAA9kdfnn4Mmn44bpoieIYHKkdghFKUD1978563llakLLLKdfslphgarcorc3haeogmmMNn243wf';
-
-  // Cat audio array
-  const audios = [miau, miau, miau, miau, miau];
+  // Trump audio array
+  const audios = [audioClip, audioClip, audioClip, audioClip, audioClip];
 
   // Function to play a random audio
   const playRandomAudio = () => {
@@ -32,11 +30,7 @@ const CatChat = () => {
   useEffect(() => {
     const fetchApiData = async () => {
       try {
-        const response = await axios.get('https://interca.onrender.com/api/purchaseData', {
-          headers: {
-            'x-access-key': accessKey,
-          },
-        });
+        const response = await axios.get('https://apitoreturnca.onrender.com/api/purchaseData');
         console.log("API data received:", response.data);
         setApiData(response.data);
       } catch (error) {
@@ -52,12 +46,12 @@ const CatChat = () => {
     setIsResponding(false);
 
     try {
-      const response = await axios.post('https://catapitalk-a1f349c48de5.herokuapp.com/api/ask', {
+      const response = await axios.post('https://apitrumptalk.onrender.com/api/ask', {
         question: userMessage,
       });
 
       const answer = response.data.answer;
-      setCatResponse(formatMessageText(answer));
+      setTrumpResponse(formatMessageText(answer));
 
       const responseLength = answer.length;
       const playCount = Math.ceil(responseLength / 50);
@@ -69,15 +63,15 @@ const CatChat = () => {
           const gifDuration = 2000;
 
           setTimeout(() => setIsResponding(false), gifDuration);
-          
-          // Parar a animação ao fim do áudio
+
+          // Stop animation when audio ends
           audio.onended = () => setIsResponding(false);
         }
       }, 500);
 
     } catch (error) {
       console.error("Error fetching AI response:", error);
-      setCatResponse("The cat is thinking too much and couldn’t respond.");
+      setTrumpResponse("Trump is thinking too much and couldn’t respond.");
     } finally {
       setIsLoading(false);
     }
@@ -103,11 +97,11 @@ const CatChat = () => {
 
   return (
     <div className="chat-container">
-      <div className="cat-image">
+      <div className="trump-image">
         <img 
-          src={isResponding ? gifCat : cat} 
-          alt="Chat Cat" 
-          className="cat"
+          src={isResponding ? gifTrump : trump} 
+          alt="Chat Trump" 
+          className="trump"
         />
       </div>
       <div className="loading">
@@ -115,12 +109,12 @@ const CatChat = () => {
       </div>
       <div className="response">
         {/* Using dangerouslySetInnerHTML to render formatted HTML */}
-        <p dangerouslySetInnerHTML={{ __html: catResponse }} className="terminal-text"></p>
+        <p dangerouslySetInnerHTML={{ __html: trumpResponse }} className="terminal-text"></p>
       </div>
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 
-          placeholder="Say something to the cat..." 
+          placeholder="Ask Trump something..." 
           value={userMessage} 
           onChange={(e) => setUserMessage(e.target.value)} 
         />
@@ -147,4 +141,4 @@ const CatChat = () => {
   );
 };  
 
-export default CatChat;
+export default TrumpChat; 
